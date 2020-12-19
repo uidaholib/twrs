@@ -18,14 +18,14 @@ source-code: https://github.com/CollectionBuilder/collectionbuilder-sa
 # SITE SETTINGS
 #
 # title of site appears in banner
-title: CollectionBuilder SA
+title: Taylor Wilderness Research Station Archive
 # tagline, a short phrase that will appear throughout the site in the top banner
-tagline: Digital Collection Magic with Static Web Technologies
+tagline: Artifacts and Archives from Taylor
 # description appears in meta tags and other locations
 # this description might appear in search result lists, keep around 160 characters max
 description: "CollectionBuilder-SA is a template for creating digital collection exhibits using static web technology."
 # keywords, a short list of subjects describing the collection, separated by semicolon, to appear in rich markup
-keywords: idaho;history;inland northwest
+keywords: idaho;history;inland northwest;wilderness
 # creator of the digital collection, to appear in meta tags; we typically use our GitHub usernames but feel free to just use your name
 author: CollectionBuilder
 # Organization branding
@@ -39,13 +39,13 @@ organization-logo-nav: https://www.lib.uidaho.edu/media/digital/bannerlogo_allwh
 #
 # provide location of the digital objects folder,
 # If using local folder, dir name with proceeding slash. If using external web location, provide full URL
-objects: /objects 
+objects:  
 # choose metadata: this is the name of the csv file in your _data directory that describes the objects in your collection
-metadata: demo-metadata
+metadata: twrs
 # page generation settings 
 # "data" value must be the name of the metadata file (other values should be not be changed)
 page_gen:
-  - data: 'demo-metadata'
+  - data: 'twrs'
     template: 'items'
     name: 'objectid'
     dir: 'items'
