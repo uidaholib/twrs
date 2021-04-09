@@ -1,6 +1,7 @@
 ---
 layout: default
 item-meta: true
+gallery: true
 ---
 <div class="container py-3">
 
@@ -9,11 +10,8 @@ item-meta: true
     <div class="row">
         <div class="col-md-6">
             <div class="card mb-4 text-center">
-                <div class="m-2">
-                    <p>
-                        {% include item/item-thumb.html %}
-                    </p>
-                </div>
+
+                {% include item/image-gallery.html %}
                 
                 <div class="my-2">
 

@@ -37,20 +37,17 @@ organization-logo-nav: https://www.lib.uidaho.edu/media/digital/bannerlogo_allwh
 ##########
 # COLLECTION SETTINGS
 #
-# provide location of the digital objects folder,
-# If using local folder, dir name with proceeding slash. If using external web location, provide full URL
-objects:  
 # choose metadata: this is the name of the csv file in your _data directory that describes the objects in your collection
 metadata: twrs
-# page generation settings 
-# "data" value must be the name of the metadata file (other values should be not be changed)
-page_gen:
-  - data: 'twrs'
-    template: 'items'
-    name: 'objectid'
-    dir: 'items'
-    extension: 'html' 
-    filter: 'objectid'  
+# page generation settings [optional!]
+# [optional: only used if you need to tweak CB defaults or generate from more than one data file]
+# page_gen:
+#   - data: 'demo-metadata'
+#     template: 'item'
+#     name: 'objectid'
+#     dir: 'items'
+#     extension: 'html' 
+#     filter: 'objectid'  
 
 ##########
 # GOOGLE SERVICES [optional!]
