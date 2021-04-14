@@ -30,7 +30,7 @@
     <div class="col-12 col-md-4 my-2 justify-content-center"><a href="{{ year | strip | prepend: '/timeline.html#' | relative_url }}" class="btn btn-outline-info">View on Timeline</a></div>{% endif %}
     {% if page.latitude and page.longitude %}
     <div class="col-12 col-md-4 my-2 justify-content-center"><a
-            href="{{ '/map.html?location=' | append: page.latitude  | append: ',' | append: page.longitude | append: '&marker=' | append: page.objectid relative_url}}"
+            href="{{ '/map.html?location=' | append: page.latitude  | append: ',' | append: page.longitude | append: '&marker=' | append: page.objectid | relative_url}}"
             class="btn btn-outline-info">View on Map</a></div>{% endif %}
 
 </div>
