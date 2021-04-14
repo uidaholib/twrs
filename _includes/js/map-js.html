@@ -17,15 +17,29 @@
     {% for f in fields %}{{ f.field | escape | jsonify }}: {{ item[f.field] | escape | jsonify }},{% endfor %}{% if item.image_thumb %} "img": {{ item.image_thumb | relative_url | jsonify }},{% endif %} "format": {{ item.format | jsonify }}, "id": {{ item.objectid | jsonify }} } }{% unless forloop.last %}, {% endunless %}{% endfor %}
     ]};
 
-    /* init map and set zoom */
-    if (window.location.hash) {
-        /* if url has a hash, it is split by comma into coordinates that set the view */
-        var hashfilter = decodeURIComponent(location.hash.substr(1));
-        var latitudeHash = hashfilter.split(',')[0]
-        var longitudeHash = hashfilter.split(',')[1]
-        var map = L.map('map').setView([latitudeHash,longitudeHash],16);
-    } else {
-        var map = L.map('map').setView([{{ site.data.theme.latitude | default: 46.727485 }},{{ site.data.theme.longitude | default: -117.014185 }}],{{ site.data.theme.zoom-level | default: 5 }});
+  // read URL query strings on page load
+
+  let url = new URL(window.location);
+    let params = url.searchParams;
+    var locationFilter = url.searchParams.get('location');
+    let markerFilter = url.searchParams.get('marker');
+    if (locationFilter && markerFilter) {
+        // code to be executed if both a location and marker parameter are in the url
+        var latitudeHash = locationFilter.split(',')[0]
+        var longitudeHash = locationFilter.split(',')[1]
+        var map = L.map('map').setView([latitudeHash, longitudeHash], 16);
+        $(document).ready(function () {
+            
+        });
+    }
+    
+    else if (locationFilter) {
+        var latitudeHash = locationFilter.split(',')[0]
+        var longitudeHash = locationFilter.split(',')[1]
+        var map = L.map('map').setView([latitudeHash, longitudeHash], 16);
+    }
+    else {
+        var map = L.map('map').setView([{{ site.data.theme.latitude | default: 46.727485 }}, {{ site.data.theme.longitude | default: -117.014185 }}], {{ site.data.theme.zoom - level | default: 5 }});
     }
 
     /* add map layer options */
@@ -117,7 +131,15 @@
         markers.enableClustering();
         document.querySelector('input.search-input').value = "";
     });{% endif %}
+    
+    if (markerFilter) {
+        var found = geodata.features.filter(function(item) { return item.properties.id === markerFilter; });
+        console.log('found', found[0].properties.id);
+        markers.fireEvent('click');
+    }
+
 
 })();
+
 
 </script>

@@ -4,9 +4,11 @@
     Ensure dependencies are added by including `gallery: true` in the layout front matter calling this include.
 
 {%- endcomment -%}
-<div id="lightgallery">
+{% unless page.object_template == 'compound_object' %}
+<div id="lightgallery">{% endunless%}
     <div class="gallery-img" data-src="{{ page.object_download | relative_url }}">
-        <p><img src="{{ page.image_small | relative_url }}" alt="item thumbnail for {{ page.title | escape }}" class="img-fluid"></p>
-        <p><small>Click to view full screen</small></p>
+        <p><img src="{{ page.image_small | relative_url }}" alt="{{ page.title | escape }}" class="img-fluid"></p>
+        <p><small>{% if page.object_template == 'compound_object' %}{{ page.title }}{% else %}Click to view full screen{% endif %}</small></p>
     </div>
-</div>
+{% unless page.object_template == 'compound_object' %}
+</div>{% endunless%}
